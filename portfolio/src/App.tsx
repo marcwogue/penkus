@@ -5,6 +5,7 @@ import About from "./components/about";
 import Projets from "./components/mesprojets";
 import Experiences from "./components/experiences";
 import Contact from "./components/contact";
+import Footer from "./components/footer";
 
 
 export default function App() {
@@ -17,7 +18,9 @@ export default function App() {
         <Projets />
         <Experiences />
         <Contact />
+        <Footer />
       </div>
+      
     </>
   )
 }

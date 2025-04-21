@@ -2,11 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: light --default, dark --prefersdark, cupcake;
+}
+
 a:hover{
     background-color: aqua;
     color: black;
     border: aqua;
     transition: 0.5s;
+    width: 99VW;
+    position: fixed;
 }
 article:hover{
     scale: 1.1;
@@ -14,9 +23,16 @@ article:hover{
     transition: 0.5s;
 }
 *{
+    font-family: 'Orbitron', sans-serif;
     behavior:inherit;
     scroll-behavior: smooth;
     scrollbar-width: none;
     transition: all;
     scrollbar-arrow-color: aqua;
+}
+
+@media (max-width: 768px) {
+    body {
+        overflow-x: hidden;
+    }
 }

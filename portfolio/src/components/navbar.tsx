@@ -26,7 +26,7 @@ const Navbar = () => {
         <li><a href="#experiences" className="text-[1.4rem] hover:bg-purple-950 p-2 rounded-2xl hover:text-accent duration-[0.5s]">expériences</a></li>
         <ArrowUpFromLine className="absoulute right-3 md:hidden m-8  scale-150" onClick={() => setShowNav(false)} />
       </ul>
-      <Menu  className=" right-3 float-right md:hidden scale-150" onClick={() => setShowNav(true)}/>
+      <Menu  className=" float-right md:hidden scale-150" onClick={() => setShowNav(true)}/>
     </div>
   </div>
   )
