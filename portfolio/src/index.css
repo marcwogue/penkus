@@ -21,8 +21,6 @@ a:hover{
     color: black;
     border: aqua;
     transition: 0.5s;
-    width: 99VW;
-    position: fixed;
 }
 article:hover{
     scale: 1.1;
