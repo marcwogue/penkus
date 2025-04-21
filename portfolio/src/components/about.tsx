@@ -24,7 +24,7 @@ const about = [
 
 const About = () => {
     return (
-        <div className="bg-slate-950 block px-10 md:px-32">
+        <div className="bg-dark  block px-10 md:px-32" id='About'>
             <h2 className="text-[2rem] text-center underline md:text-[4rem] font-bold">à propos de moi</h2>
             <p className="text-[1.4rem] md:text-[1rem]">je suis un jeune dev specialise dans les technologie HTML/CSS/JS; je maitrise les bibliotheque React, Tailwind CSS, et DaisyUI, avec une attention particulière portée sur l'UX et l'accessibilité. vous pouvez compter sur moi pour transformer de simples images, ou idee en site web totalement responsive ,  attractif, et interactifs pour le biens de  vos utilisateurs</p>
             <div className='md:mx-32 mx-10 space-y-5 md:space-x-4 my-6 flex flex-col md:flex-row'>

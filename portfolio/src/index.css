@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+a:hover{
+    background-color: aqua;
+    color: black;
+    border: aqua;
+    transition: 0.5s;
+}
+article:hover{
+    scale: 1.1;
+    width: 110%;
+    transition: 0.5s;
+}
+*{
+    behavior:inherit;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    transition: all;
+    scrollbar-arrow-color: aqua;
+}

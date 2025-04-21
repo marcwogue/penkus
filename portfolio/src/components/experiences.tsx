@@ -63,7 +63,7 @@ import bootstrap from '../assets/tech/téléchargement.jpeg'
 
 const Experiences = () => {
     return (
-        <div>
+        <div id='experiences'>
             <h2 className="text-[2rem] text-center underline md:text-[4rem] font-bold">expériences</h2>
            <div className="flex flex-col items-center gap-4 md:gap-8 md:flex-row">   
               <div >
@@ -83,11 +83,11 @@ const Experiences = () => {
                         </h2>
                         <div className="grid grid-cols-1 font-bold md:grid-cols-2 gap-4">
                             {certif.map((cret)=>(
-                                <div key={cret.id} className="bg-slate-950 p-4 rounded-2xl">
+                                <div key={cret.id} className="bg-slate-500 p-4 rounded-2xl">
                                     <h3 className="text-[2rem] md:text-[1.5rem] font-bold">{cret.title}</h3>
                                     <p>{cret.description}</p>
                                     <p>{cret.date}</p>
-                                    <a href={cret.link} target="_blank" rel="noopener noreferrer" className='text-dark btn btn-error'>voir la certification</a>
+                                    <a href={cret.link} target="_blank" rel="noopener noreferrer" className=' text-dark btn btn-error'>voir la certification</a>
                                 </div>
                             ))}
                         </div>
