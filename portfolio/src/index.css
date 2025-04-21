@@ -1,12 +1,19 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
-
-@import "tailwindcss";
 @plugin "daisyui" {
   themes: light --default, dark --prefersdark, cupcake;
+}
+
+H1,h2,h3,h4,h5,h6{
+
+    font-family: 'Orbitron';
 }
 
 a:hover{
@@ -23,12 +30,12 @@ article:hover{
     transition: 0.5s;
 }
 *{
-    font-family: 'Orbitron', sans-serif;
     behavior:inherit;
     scroll-behavior: smooth;
     scrollbar-width: none;
     transition: all;
     scrollbar-arrow-color: aqua;
+    font-family: 'Montserrat', sans-serif;
 }
 
 @media (max-width: 768px) {
