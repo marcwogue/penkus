@@ -1,0 +1,180 @@
+### Schéma de Fonctionnement
+
+Voici comment fonctionnera le backend :
+
+1.  **Réception de la requête :** Le backend écoutera les requêtes HTTP `POST` à une route spécifique (par exemple, `/api/contact`).
+2.  **Validation des données :** Le backend validera les données reçues du formulaire (nom, email, message).
+3.  **Envoi de l'e-mail :** Le backend utilisera un service d'envoi d'e-mails (comme Nodemailer pour Node.js ou `smtplib` pour Python) pour envoyer un e-mail à l'adresse spécifiée (`kakudja0@gmail.com`).
+4.  **Réponse :** Le backend enverra une réponse au frontend indiquant si l'e-mail a été envoyé avec succès ou s'il y a eu une erreur.
+
+### Prérequis
+
+Avant de commencer, assure-toi d'avoir les éléments suivants :
+
+* Node.js et npm (pour l'exemple Node.js) ou Python et pip (pour l'exemple Python) installés.
+* Un compte Gmail (ou un autre service de messagerie) pour envoyer des e-mails.
+* Le mot de passe de ton compte Gmail ou un mot de passe d'application (si l'authentification à deux facteurs est activée).
+
+### Exemple 1 : Node.js (Express + Nodemailer)
+
+1.  **Initialise un projet Node.js :**
+
+    ```bash
+    mkdir contact-form-backend
+    cd contact-form-backend
+    npm init -y
+    ```
+
+2.  **Installe Express et Nodemailer :**
+
+    ```bash
+    npm install express nodemailer cors
+    ```
+
+3.  **Crée un fichier `server.js` :**
+
+    ```javascript
+    const express = require('express');
+    const nodemailer = require('nodemailer');
+    const cors = require('cors');
+    const app = express();
+    const port = 3000;
+
+    app.use(cors());
+    app.use(express.json());
+
+    // Remplacez par tes informations d'identification Gmail
+    const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'your-email@gmail.com',  // Remplace ceci par ton adresse email
+            pass: 'your-password'     // Remplace ceci par ton mot de passe ou mot de passe d'application
+        }
+    });
+
+    app.post('/api/contact', (req, res) => {
+        const { name, email, message } = req.body;
+
+        // Validation de base
+        if (!name || !email || !message) {
+            return res.status(400).json({ error: 'Tous les champs sont requis.' });
+        }
+
+        const mailOptions = {
+            from: 'your-email@gmail.com',  // Remplace ceci par ton adresse email
+            to: 'kakudja0@gmail.com',      // L'adresse email du destinataire
+            subject: 'Nouveau message du formulaire de contact',
+            text: `Nom: ${name}\nEmail: ${email}\nMessage: ${message}`
+        };
+
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.log(error);
+                res.status(500).json({ error: 'Erreur lors de l\'envoi de l\'email.' });
+            } else {
+                console.log('Email envoyé: ' + info.response);
+                res.json({ success: 'Message envoyé avec succès !' });
+            }
+        });
+    });
+
+    app.listen(port, () => {
+        console.log(`Serveur en écoute sur le port ${port}`);
+    });
+    ```
+
+4.  **Remplace les informations d'identification :**
+    * Remplace `'your-email@gmail.com'` par ton adresse e-mail Gmail.
+    * Remplace `'your-password'` par ton mot de passe Gmail ou un [mot de passe d'application](https://support.google.com/accounts/answer/185833?hl=fr) si tu as activé la validation en deux étapes.
+
+5.  **Exécute le serveur :**
+
+    ```bash
+    node server.js
+    ```
+
+### Exemple 2 : Python (Flask + smtplib)
+
+1.  **Crée un répertoire de projet :**
+
+    ```bash
+    mkdir contact-form-backend
+    cd contact-form-backend
+    ```
+
+2.  **Crée un environnement virtuel (recommandé) :**
+
+    ```bash
+    python3 -m venv venv
+    source venv/bin/activate  # Sur Linux/macOS
+    venv\Scripts\activate  # Sur Windows
+    ```
+
+3.  **Installe Flask :**
+
+    ```bash
+    pip install Flask
+    ```
+
+4.  **Crée un fichier `app.py` :**
+
+    ```python
+    from flask import Flask, request, jsonify
+    import smtplib
+    from email.mime.text import MIMEText
+
+    app = Flask(__name__)
+
+    @app.route('/api/contact', methods=['POST'])
+    def send_email():
+        data = request.get_json()
+        name = data.get('name')
+        email = data.get('email')
+        message = data.get('message')
+
+        # Validation de base
+        if not name or not email or not message:
+            return jsonify({'error': 'Tous les champs sont requis.'}), 400
+
+        # Remplacez par tes informations d'identification Gmail
+        mail_from = 'your-email@gmail.com'  # Remplace ceci par ton adresse email
+        mail_to = 'kakudja0@gmail.com'      # L'adresse email du destinataire
+        password = 'your-password'     # Remplace ceci par ton mot de passe ou mot de passe d'application
+
+        msg = MIMEText(f"Nom: {name}\nEmail: {email}\nMessage: {message}")
+        msg['Subject'] = 'Nouveau message du formulaire de contact'
+        msg['From'] = mail_from
+        msg['To'] = mail_to
+
+        try:
+            server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
+            server.login(mail_from, password)
+            server.sendmail(mail_from, [mail_to], msg.as_string())
+            server.quit()
+            return jsonify({'success': 'Message envoyé avec succès !'}), 200
+        except Exception as e:
+            print(e)
+            return jsonify({'error': f'Erreur lors de l\'envoi de l\'email: {str(e)}'}), 500
+
+    if __name__ == '__main__':
+        app.run(debug=True)
+    ```
+
+5.  **Remplace les informations d'identification :**
+    * Remplace `'your-email@gmail.com'` par ton adresse e-mail Gmail.
+    * Remplace `'your-password'` par ton mot de passe Gmail ou un [mot de passe d'application](https://support.google.com/accounts/answer/185833?hl=fr) si tu as activé la validation en deux étapes.
+
+6.  **Exécute le serveur :**
+
+    ```bash
+    python app.py
+    ```
+
+### Configuration du Frontend
+
+Mets à jour la variable `backendUrl` dans le code JavaScript de ton formulaire HTML pour qu'elle corresponde à l'URL de ton serveur backend :
+
+* Pour Node.js : `const backendUrl = 'http://localhost:3000/api/contact';`
+* Pour Python : `const backendUrl = 'http://localhost:5000/api/contact';`
+
+N'oublie pas de remplacer l'URL et les informations d'identification par les tiens.
