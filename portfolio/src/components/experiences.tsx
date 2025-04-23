@@ -68,7 +68,7 @@ const Experiences = () => {
            <div className="flex flex-col items-center gap-4 md:gap-8 md:flex-row">   
               <div >
                     <h2 className='capitalize mb-4 text-center'> mes competences</h2>
-                <div className="grid grid-cols-2 font-bold md:grid-cols-3 gap-4">
+                <div className="grid grid-cols-2 font-bold lg:grid-cols-3 gap-4">
                         {images.map((image) => (
                             <div key={image.id} className="flex flex-col items-center">
                                 <img src={image.img} alt={image.title} className="w-24 rounded-full border-2 border-slate-400 h-24 md:w-32 md:h-32" />

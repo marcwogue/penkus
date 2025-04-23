@@ -18,7 +18,7 @@ const Home = () => {
         </a>
        </div>
        <div className="md:ml-60 text-center">
-        <img src={img} alt="" className=" md:h-full w-80 md:w-full object-cover rounded-2xl" />
+        <img src={img} alt="" className=" md:h-full w-80 md:w-[100rem] object-cover rounded-2xl" />
        </div>
       </div>
     </div>

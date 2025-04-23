@@ -32,7 +32,7 @@ const Projets = () => {
             {projet.map((projet) => (
                 <div key={projet.id} className="bg-slate-500 rounded-2xl p-4">
                     <div className="w-[22rem] h-[14rem] overflow-hidden rounded-xl">
-                    <img src={projet.image} alt={projet.title} className="md:w-[22rem] w-[80%] h-[14rem] duration-700 hover:scale-105 object-cover rounded-2xl" />
+                    <img src={projet.image} alt={projet.title} className="lg:w-[22rem] md:w-[13rem] w-[80%] h-[14rem] duration-700 hover:scale-105 object-cover rounded-2xl" />
                     </div>
                     <h3 className="text-xl font-bold">{projet.title}</h3>
                     <p className="text-[1rem] mb-5">{projet.description}</p>

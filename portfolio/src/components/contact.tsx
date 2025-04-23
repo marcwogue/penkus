@@ -7,19 +7,19 @@ const Contact = () => {
             <form action="https://formspree.io/f/myzwyjwb" method="POST" className="form-control md:w-[50vw] text-success items-center bg-slate-600 rounded-2xl md:mx-[15vw]  w-[80vw] space-y-6 place-items-center p-10 ">
                 <div className="form-control">
                     <label htmlFor="name" className="label">name</label><br />
-                    <input type="text" name="name" placeholder="name" className=" text-black input bg-transparent input-bordered" />
+                    <input type="text" name="name" placeholder="name" className=" bg-slate-400 text-black input input-bordered" />
                 </div>
                 <div className="form-control">
                     <label htmlFor="email" className="label">email</label><br />
-                    <input type="email" name="email" placeholder="email" className=" text-black input bg-transparent input-bordered" />
+                    <input type="email" name="email" placeholder="email" className=" bg-slate-400 text-black input input-bordered" />
                 </div>
                 <div className="form-control">
                     <label htmlFor="subject" className="label">subject</label><br />
-                    <input type="text"  name="subject" placeholder="subject" className=" text-black input bg-transparent input-bordered"/>
+                    <input type="text"  name="subject" placeholder="subject" className=" bg-slate-400 text-black input input-bordered"/>
                 </div>
                 <div className="form-control">
                     <label htmlFor="message" className="label">message</label><br />    
-                    <textarea placeholder="message" name="message" className="textarea scale-[1.20] mt-3 bg-transparent textarea-bordered"></textarea>
+                    <textarea placeholder="message" name="message" className="textarea scale-[1.20] mt-3  bg-slate-400  text-black textarea-bordered"></textarea>
                 </div>
                 <button type="submit" className="p-4 text-black bg-primary w-full md:w-fit rounded-xl ">Envoyer</button>
             </form>
