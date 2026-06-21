@@ -1,6 +1,6 @@
 import { Mail, Download } from "lucide-react"
 import { motion } from "framer-motion"
-import img from '../assets/WhatsApp Image 2025-04-14 at 05.31.37.jpeg'
+import img from '../assets/pp.jpeg'
 
 const Home = () => {
   return (
